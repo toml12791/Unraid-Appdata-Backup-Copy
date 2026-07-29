@@ -78,7 +78,7 @@ Do not rename the script unless `RUN.cmd` is updated too.
 RUN.cmd
 ```
 
-3. Complete the built-in setup when prompted. This will create a working config.ini file.
+3. Complete the built-in setup when prompted. This will create a working config file.
 4. Run a successful manual backup before creating a scheduled task.
 
 A typical configuration looks like this:
@@ -96,7 +96,7 @@ Discord is optional. Leave `Webhook=` blank to disable notifications.
 
 > `Config.ini` may contain a Discord webhook and should not be shared.
 
-## Configuration
+## Manual Configuration
 
 ### Backup section
 
