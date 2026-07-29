@@ -8,8 +8,6 @@
         |    O               O    | /
         |_________________________|/
 
-# Unraid Appdata Backup Copy
-
 **Version 1.0.0**
 
 A Windows PowerShell utility that copies the newest completed Unraid appdata backup to a Windows-attached drive, verifies the copied files, applies local retention, writes detailed logs, and can send Discord notifications.
