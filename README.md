@@ -2,10 +2,6 @@
                     UNRAID APPDATA BACKUP COPY
                         POWERSHELL EDITION
 
-
-# Copyright (c) 2026 toml12791
-# SPDX-License-Identifier: MIT
-
 Version:
     1.0.0
 
