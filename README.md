@@ -402,10 +402,10 @@ Notification colors:
 
 | Color | Meaning |
 |---|---|
-| Blue | Webhook test |
-| Green | Clean completion |
-| Yellow | Manual stale-backup warning or completed-with-warning result |
-| Red | Fatal failure |
+| 🔵 Blue | Webhook test |
+| 🟢 Green | Clean completion |
+| 🟡 Yellow | Manual stale-backup warning or completed-with-warning result |
+| 🔴 Red | Fatal failure |
 
 Completion notifications may include:
 
