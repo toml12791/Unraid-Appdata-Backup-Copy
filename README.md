@@ -64,15 +64,14 @@ Do not rename the script unless `RUN.cmd` is updated too.
 ## Quick start
 
 1. Download or clone the repository.
-2. Copy `Config.example.ini` to `Config.ini`.
-3. Run:
+2. Run:
 
 ```bat
 RUN.cmd
 ```
 
-4. Complete the built-in setup when prompted.
-5. Run a successful manual backup before creating a scheduled task.
+3. Complete the built-in setup when prompted. This will create a working config.ini file.
+4. Run a successful manual backup before creating a scheduled task.
 
 A typical configuration looks like this:
 
@@ -82,12 +81,12 @@ Source=\\tower\share\APPDATA Backup
 Destination=E:\APPDATA Backup
 
 [Discord]
-Webhook=
+Webhook=https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN
 ```
 
 Discord is optional. Leave `Webhook=` blank to disable notifications.
 
-> `Config.ini` may contain a Discord webhook and should not be committed. The included `.gitignore` excludes it.
+> `Config.ini` may contain a Discord webhook and should not be shared.
 
 ## Configuration
 
@@ -178,7 +177,7 @@ Scheduled mode:
 - Returns a process exit code to Task Scheduler
 - Stops with exit code `22` when configuration is missing, invalid, incomplete, or still uses placeholders
 
-Complete first-run setup manually before using scheduled mode.
+Complete the first-run setup manually before using scheduled mode.
 
 ### Discord test
 
