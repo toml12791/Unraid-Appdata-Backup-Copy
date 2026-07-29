@@ -81,7 +81,7 @@ Source=\\tower\share\APPDATA Backup
 Destination=E:\APPDATA Backup
 
 [Discord]
-Webhook=https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN
+Webhook=https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN
 ```
 
 Discord is optional. Leave `Webhook=` blank to disable notifications.
