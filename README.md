@@ -13,9 +13,8 @@ an additional Windows-side copy with verification, retention, logs, and optional
 Discord notifications.
 
 
-===============================================================================
 1. WHAT THIS UTILITY DOES
-===============================================================================
+
 
 During a normal run, the utility:
 
@@ -37,9 +36,8 @@ During a normal run, the utility:
 The Unraid source is treated as read only.
 
 
-===============================================================================
 2. WHAT THIS UTILITY DOES NOT DO
-===============================================================================
+
 
 This utility does not:
 
@@ -58,9 +56,8 @@ It is an additional copy, verification, retention, logging, and notification
 layer for backups that Unraid has already created.
 
 
-===============================================================================
 3. REQUIREMENTS
-===============================================================================
+
 
 Required:
 
@@ -81,9 +78,8 @@ RUN.cmd automatically uses PowerShell 7 when it is installed and otherwise
 falls back to Windows PowerShell 5.1.
 
 
-===============================================================================
 4. FILES IN THE PACKAGE
-===============================================================================
+
 
 Keep these files together in the same folder:
 
@@ -100,9 +96,8 @@ RUN.cmd expects the PowerShell script to be named exactly:
 Do not rename the .ps1 unless RUN.cmd is also updated.
 
 
-===============================================================================
 5. FIRST-RUN SETUP
-===============================================================================
+
 
 The packaged Config.ini contains placeholder values:
 
@@ -170,9 +165,8 @@ Future runs skip setup as long as Config.ini remains valid and the packaged
 placeholders are not restored.
 
 
-===============================================================================
 6. CONFIG.INI
-===============================================================================
+
 
 Config.ini is stored beside the PowerShell script.
 
@@ -243,9 +237,8 @@ The untouched packaged placeholder file may be replaced without creating a
 placeholder backup.
 
 
-===============================================================================
 7. RUN MODES
-===============================================================================
+
 
 Manual backup
 -------------
