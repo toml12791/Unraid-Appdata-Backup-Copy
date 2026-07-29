@@ -1,0 +1,5 @@
+# Locally generated configuration
+Config.ini
+
+# Runtime output
+*.log
