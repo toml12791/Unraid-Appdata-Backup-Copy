@@ -94,7 +94,7 @@ Webhook=https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN
 
 Discord is optional. Leave `Webhook=` blank to disable notifications.
 
-> `Config.ini` may contain a Discord webhook and should not be shared.
+> **Keep the webhook URL private.** Anyone who obtains it may be able to send messages through that webhook. Do not publish or share a populated `Config.ini`.
 
 <details>
 <summary><h2>Manual Configuration</h2></summary>
@@ -311,7 +311,7 @@ Default maximum wait:
 6 hours
 ```
 
-This strongly suggests that Unraid has finished writing the backup, but it does not prove archive, database, or application integrity.
+Passing the stability check provides reasonable evidence that Unraid has finished writing the backup, but it does not verify archive, database, or application integrity.
 
 </details>
 
