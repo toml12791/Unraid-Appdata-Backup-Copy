@@ -530,6 +530,7 @@ Recommended action:
 ```text
 "C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
 ```
+> **Example paths:** Replace `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder where you extracted or placed the utility.
 
 **Arguments**
 
