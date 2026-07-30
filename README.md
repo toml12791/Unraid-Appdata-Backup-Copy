@@ -161,7 +161,7 @@ Config.ini.bak-YYYYMMDD_HHMMSS
 </details>
 
 <details>
-<summary><strong>Run modes</strong></summary>
+<summary><h2>Run modes</h2></summary>
 
 
 ### Manual backup
@@ -227,7 +227,7 @@ pwsh.exe -NoProfile -ExecutionPolicy Bypass `
 </details>
 
 <details>
-<summary><strong>Backup-folder naming</strong></summary>
+<summary><h2>Backup-folder naming</h2></summary>
 
 
 The source folder must directly contain at least one backup directory whose name exactly matches:
@@ -256,7 +256,7 @@ Matching folder names are sorted newest first.
 </details>
 
 <details>
-<summary><strong>How a normal run works</strong></summary>
+<summary><h2>How a normal run works</h2></summary>
 
 
 1. Validate the source and destination.
@@ -275,7 +275,7 @@ Matching folder names are sorted newest first.
 </details>
 
 <details>
-<summary><strong>Backup age</strong></summary>
+<summary><h2>Backup age</h2></summary>
 
 
 Default maximum age:
@@ -294,7 +294,7 @@ Setting the maximum age to `0` does not disable freshness checking. It creates a
 </details>
 
 <details>
-<summary><strong>Source stability check</strong></summary>
+<summary><h2>Source stability check</h2></summary>
 
 
 The newest backup is not copied immediately. The utility repeatedly checks:
@@ -316,7 +316,7 @@ This strongly suggests that Unraid has finished writing the backup, but it does 
 </details>
 
 <details>
-<summary><strong>Free-space check</strong></summary>
+<summary><h2>Free-space check</h2></summary>
 
 
 Before copying, the utility estimates which files still need to be transferred.
@@ -346,7 +346,7 @@ Robocopy remains the final authority on which files are copied.
 </details>
 
 <details>
-<summary><strong>Robocopy behavior</strong></summary>
+<summary><h2>Robocopy behavior</h2></summary>
 
 
 The transfer uses:
@@ -394,7 +394,7 @@ Codes `4-7` are accepted only when post-copy verification passes and retention s
 </details>
 
 <details>
-<summary><strong>Post-copy verification</strong></summary>
+<summary><h2>Post-copy verification</h2></summary>
 
 
 For every source file, the utility checks:
@@ -417,7 +417,7 @@ The log may list up to the first 20 missing, wrong-size, or extra paths.
 </details>
 
 <details>
-<summary><strong>Local retention</strong></summary>
+<summary><h2>Local retention</h2></summary>
 
 
 Default retention:
@@ -444,7 +444,7 @@ Retention:
 </details>
 
 <details>
-<summary><strong>Discord notifications</strong></summary>
+<summary><h2>Discord notifications</h2></summary>
 
 
 Notification colors:
@@ -476,7 +476,7 @@ The configured webhook is redacted from Discord-delivery diagnostic text.
 </details>
 
 <details>
-<summary><strong>Logs</strong></summary>
+<summary><h2>Logs</h2></summary>
 
 
 If the destination is:
@@ -518,7 +518,7 @@ Permanent logs are not automatically pruned.
 </details>
 
 <details>
-<summary><strong>Windows Task Scheduler</strong></summary>
+<summary><h2>Windows Task Scheduler</h2></summary>
 
 
 Complete one successful manual run first.
@@ -556,7 +556,7 @@ The utility does not currently include an internal single-instance lock. Prevent
 </details>
 
 <details>
-<summary><strong>Result types</strong></summary>
+<summary><h2>Result types</h2></summary>
 
 
 ### Clean success
@@ -608,7 +608,7 @@ Result:
 </details>
 
 <details>
-<summary><strong>Default settings</strong></summary>
+<summary><h2>Default settings</h2></summary>
 
 
 | Setting | Default |
@@ -624,7 +624,7 @@ These policies are defined near the beginning of the PowerShell script.
 </details>
 
 <details>
-<summary><strong>Exit codes</strong></summary>
+<summary><h2>Exit codes</h2></summary>
 
 | Code | Meaning |
 |---:|---|
@@ -655,7 +655,7 @@ When diagnosing a failure, use the logged stage, reason, details, and log path r
 </details>
 
 <details>
-<summary><strong>Troubleshooting</strong></summary>
+<summary><h2>Troubleshooting</h2></summary>
 
 ### First-run setup appeared unexpectedly
 
@@ -717,7 +717,7 @@ Check the task account, stored password, network-share permissions, destination-
 </details>
 
 <details>
-<summary><strong>Known limitations</strong></summary>
+<summary><h2>Known limitations</h2></summary>
 
 
 - Verification uses relative path and file size, not file hashes.
@@ -736,7 +736,7 @@ Check the task account, stored password, network-share permissions, destination-
 </details>
 
 <details>
-<summary><strong>What this utility does not replace</strong></summary>
+<summary><h2>What this utility does not replace</h2></summary>
 
 
 This project does not replace:
@@ -753,7 +753,7 @@ It is an additional copy, verification, retention, logging, and notification lay
 </details>
 
 <details>
-<summary><strong>License</strong></summary>
+<summary><h2>License</h2></summary>
 
 
 Released under the [MIT License](LICENSE).
