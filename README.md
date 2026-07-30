@@ -96,11 +96,14 @@ Discord is optional. Leave `Webhook=` blank to disable notifications.
 
 > **Keep the webhook URL private.** Anyone who obtains it may be able to send messages through that webhook. Do not publish or share a populated `Config.ini`.
 
+<a name="configuration-and-execution"></a>
 <details>
-<summary><h2>Manual Configuration</h2></summary>
+<summary><h2>Configuration and execution</h2></summary>
 
+<a name="manual-configuration"></a>
+### Manual configuration
 
-### Backup section
+#### Backup section
 
 The `[Backup]` section requires:
 
@@ -122,7 +125,7 @@ Rules:
 - Settings before a section header are rejected.
 - Inline comments are not removed automatically.
 
-### Discord section
+#### Discord section
 
 > **To create or retrieve a webhook:** Open the destination channel in Discord, select **Edit Channel** → **Integrations** → **Webhooks**, then choose an existing webhook or select **New Webhook**. Use **Copy Webhook URL** and paste the complete URL after `Webhook=`.
 
@@ -142,7 +145,7 @@ Webhook=
 
 The entire `[Discord]` section may also be omitted.
 
-### Configuration recovery
+#### Configuration recovery
 
 When first-run recovery replaces a custom or malformed `Config.ini`, the previous file is preserved as:
 
@@ -150,13 +153,10 @@ When first-run recovery replaces a custom or malformed `Config.ini`, the previou
 Config.ini.bak-YYYYMMDD_HHMMSS
 ```
 
-</details>
+<a name="run-modes"></a>
+### Run modes
 
-<details>
-<summary><h2>Run modes</h2></summary>
-
-
-### Manual backup
+#### Manual backup
 
 ```bat
 RUN.cmd
@@ -169,7 +169,7 @@ Manual mode:
 - Allows a stale backup to continue with a warning
 - Keeps the final result on screen
 
-### Scheduled backup
+#### Scheduled backup
 
 ```bat
 RUN.cmd /scheduled
@@ -185,7 +185,7 @@ Scheduled mode:
 
 Complete the first-run setup manually before using scheduled mode.
 
-### Discord test
+#### Discord test
 
 ```bat
 RUN.cmd /testdiscord
@@ -200,7 +200,7 @@ Discord-test mode:
 - Exits `19` when Discord is disabled
 - Exits `1` when delivery fails
 
-### Direct PowerShell usage
+#### Direct PowerShell usage
 
 > Run these commands from the folder containing `Unraid_Appdata_Backup_Copy.ps1`. They use whichever PowerShell version is currently open.
 > For normal use, `RUN.cmd` is recommended because it selects PowerShell 7 when available and handles the execution-policy arguments automatically.
@@ -223,10 +223,53 @@ Discord-test mode:
 & ".\Unraid_Appdata_Backup_Copy.ps1" -TestDiscord
 ```
 
+<a name="windows-task-scheduler"></a>
+### Windows Task Scheduler
+
+Complete one successful manual run first.
+
+Recommended action:
+
+> **Example installation path:** Replace both instances of `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder containing the utility.
+
+**Program/script**
+
+```text
+"C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
+```
+> **Task Scheduler may automatically add quotation marks when the path is selected using `Browse`. Leave them in place.**
+
+**Arguments**
+
+```text
+/scheduled
+```
+> **The `/scheduled` argument runs the utility in scheduled mode. This prevents interactive prompts that could leave an unattended task waiting for input. See [Run modes](#run-modes) for details.**
+
+**Start in**
+
+```text
+C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0
+```
+
+Recommended task settings:
+
+- Run under a Windows account with access to the Unraid share
+- Run whether the user is logged on or not, when desired
+- Wake the computer to run the task, when desired
+- Run as soon as possible after a missed start, when desired
+- When the task is already running, choose **Do not start a new instance**
+
+The utility does not currently include an internal single-instance lock. Prevent overlapping runs through Task Scheduler.
+
 </details>
 
+<a name="how-the-backup-process-works"></a>
 <details>
-<summary><h2>Backup-folder naming</h2></summary>
+<summary><h2>How the backup process works</h2></summary>
+
+<a name="backup-folder-naming"></a>
+### Backup-folder naming
 
 > **This utility is designed to work with backups created by the Unraid plugin `Appdata Backup`, or another process that uses the same `ab_YYYYMMDD_HHMMSS` folder-naming convention.**
 
@@ -253,11 +296,8 @@ ab_20260727
 
 Matching folder names are sorted newest first.
 
-</details>
-
-<details>
-<summary><h2>How a normal run works</h2></summary>
-
+<a name="how-a-normal-run-works"></a>
+### How a normal run works
 
 1. Validate the source and destination.
 2. Locate the newest correctly named backup folder.
@@ -272,11 +312,8 @@ Matching folder names are sorted newest first.
 11. Apply local retention.
 12. Write the final log and send a Discord result when enabled.
 
-</details>
-
-<details>
-<summary><h2>Backup age</h2></summary>
-
+<a name="backup-age"></a>
+### Backup age
 
 Default maximum age:
 
@@ -291,11 +328,8 @@ The timestamp is taken from the backup-folder name.
 
 Setting the maximum age to `0` does not disable freshness checking. It creates an extremely strict limit and will normally mark every existing backup as stale.
 
-</details>
-
-<details>
-<summary><h2>Source stability check</h2></summary>
-
+<a name="source-stability-check"></a>
+### Source stability check
 
 The newest backup is not copied immediately. The utility repeatedly checks:
 
@@ -313,11 +347,8 @@ Default maximum wait:
 
 Passing the stability check provides reasonable evidence that Unraid has finished writing the backup, but it does not verify archive, database, or application integrity.
 
-</details>
-
-<details>
-<summary><h2>Free-space check</h2></summary>
-
+<a name="free-space-check"></a>
+### Free-space check
 
 Before copying, the utility estimates which files still need to be transferred.
 
@@ -343,11 +374,8 @@ When no data appears to require copying, the reserve is not required for that ru
 
 Robocopy remains the final authority on which files are copied.
 
-</details>
-
-<details>
-<summary><h2>Robocopy behavior</h2></summary>
-
+<a name="robocopy-behavior"></a>
+### Robocopy behavior
 
 The transfer uses:
 
@@ -392,11 +420,8 @@ Robocopy return codes are interpreted as:
 
 Codes `4-7` are accepted only when post-copy verification passes and retention succeeds.
 
-</details>
-
-<details>
-<summary><h2>Post-copy verification</h2></summary>
-
+<a name="post-copy-verification"></a>
+### Post-copy verification
 
 For every source file, the utility checks:
 
@@ -415,11 +440,8 @@ The log may list up to the first 20 missing, wrong-size, or extra paths.
 
 > Verification does not use cryptographic hashes. Equal-size files with different contents would not be detected.
 
-</details>
-
-<details>
-<summary><h2>Local retention</h2></summary>
-
+<a name="local-retention"></a>
+### Local retention
 
 Default retention:
 
@@ -444,9 +466,12 @@ Retention:
 
 </details>
 
+<a name="notifications-logs-and-results"></a>
 <details>
-<summary><h2>Discord notifications</h2></summary>
+<summary><h2>Notifications, logs, and results</h2></summary>
 
+<a name="discord-notifications"></a>
+### Discord notifications
 
 Notification colors:
 
@@ -474,11 +499,8 @@ A Discord delivery problem does not turn an otherwise successful backup into a f
 
 The configured webhook is redacted from Discord-delivery diagnostic text.
 
-</details>
-
-<details>
-<summary><h2>Logs</h2></summary>
-
+<a name="logs"></a>
+### Logs
 
 If the destination is:
 
@@ -516,55 +538,10 @@ Temporary Robocopy logs are normally removed after successful parsing. They may 
 
 Permanent logs are not automatically pruned.
 
-</details>
+<a name="result-types"></a>
+### Result types
 
-<details>
-<summary><h2>Windows Task Scheduler</h2></summary>
-
-
-Complete one successful manual run first.
-
-Recommended action:
-
-> **Example installation path:** Replace both instances of `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder containing the utility.
-
-**Program/script**
-
-```text
-"C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
-```
-> **Task Scheduler may automatically add quotation marks when the path is selected using `Browse`. Leave them in place.**
-
-**Arguments**
-
-```text
-/scheduled
-```
-> **The `/scheduled` argument runs the utility in scheduled mode. This prevents interactive prompts that could leave an unattended task waiting for input. See [Run modes](#run-modes) for details.**
-
-**Start in**
-
-```text
-C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0
-```
-
-Recommended task settings:
-
-- Run under a Windows account with access to the Unraid share
-- Run whether the user is logged on or not, when desired
-- Wake the computer to run the task, when desired
-- Run as soon as possible after a missed start, when desired
-- When the task is already running, choose **Do not start a new instance**
-
-The utility does not currently include an internal single-instance lock. Prevent overlapping runs through Task Scheduler.
-
-</details>
-
-<details>
-<summary><h2>Result types</h2></summary>
-
-
-### 🟢 Clean success
+#### 🟢 Clean success
 
 A clean success means configuration, source checks, stability, space checks, Robocopy, verification, and retention all completed successfully.
 
@@ -574,7 +551,7 @@ Result:
 - Checkmark completion screen
 - Exit code `0`
 
-### 🟡 Completed with warning
+#### 🟡 Completed with warning
 
 Common causes:
 
@@ -589,7 +566,7 @@ Result:
 - Warning completion screen
 - Exit code `0`
 
-### 🔴 Failure
+#### 🔴 Failure
 
 Examples:
 
@@ -610,26 +587,8 @@ Result:
 - Failure screen
 - Nonzero exit code
 
-</details>
-
-<details>
-<summary><h2>Default settings</h2></summary>
-
-
-| Setting | Default |
-|---|---:|
-| Local backups retained | `10` |
-| Maximum source age | `48 hours` |
-| Free-space reserve | `50 GB` |
-| Stability requirement | `3` unchanged one-minute comparisons |
-| Maximum stability wait | `6 hours` |
-
-These policies are defined near the beginning of the PowerShell script.
-
-</details>
-
-<details>
-<summary><h2>Exit codes</h2></summary>
+<a name="exit-codes"></a>
+### Exit codes
 
 | Code | Meaning |
 |---:|---|
@@ -659,6 +618,7 @@ When diagnosing a failure, use the logged stage, reason, details, and log path r
 
 </details>
 
+<a name="troubleshooting"></a>
 <details>
 <summary><h2>Troubleshooting</h2></summary>
 
@@ -721,9 +681,25 @@ Check the task account, stored password, network-share permissions, destination-
 
 </details>
 
+<a name="reference-and-limitations"></a>
 <details>
-<summary><h2>Known limitations</h2></summary>
+<summary><h2>Reference and limitations</h2></summary>
 
+<a name="default-settings"></a>
+### Default settings
+
+| Setting | Default |
+|---|---:|
+| Local backups retained | `10` |
+| Maximum source age | `48 hours` |
+| Free-space reserve | `50 GB` |
+| Stability requirement | `3` unchanged one-minute comparisons |
+| Maximum stability wait | `6 hours` |
+
+These policies are defined near the beginning of the PowerShell script.
+
+<a name="known-limitations"></a>
+### Known limitations
 
 - Verification uses relative path and file size, not file hashes.
 - Source completion is inferred from stability.
@@ -738,11 +714,8 @@ Check the task account, stored password, network-share permissions, destination-
 - There is no rollback if retention partially succeeds before an error.
 - Archive contents and application databases are not internally validated.
 
-</details>
-
-<details>
-<summary><h2>What this utility does not replace</h2></summary>
-
+<a name="what-this-utility-does-not-replace"></a>
+### What this utility does not replace
 
 This project does not replace:
 
