@@ -757,11 +757,8 @@ It is an additional copy, verification, retention, logging, and notification lay
 
 </details>
 
-<summary><h2>License</h2></summary>
-
+## License
 
 Released under the [MIT License](LICENSE).
 
 Copyright (c) 2026 toml12791
-
-</details>
