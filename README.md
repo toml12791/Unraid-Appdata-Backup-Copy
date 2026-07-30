@@ -229,6 +229,7 @@ pwsh.exe -NoProfile -ExecutionPolicy Bypass `
 <details>
 <summary><h2>Backup-folder naming</h2></summary>
 
+> **This utility is designed to work with backups created by the Unraid plugin `Appdata Backup`, or another process that uses the same `ab_YYYYMMDD_HHMMSS` folder-naming convention.**
 
 The source folder must directly contain at least one backup directory whose name exactly matches:
 
