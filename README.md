@@ -124,6 +124,8 @@ Rules:
 
 ### Discord section
 
+> **To create or retrieve a webhook:** Open the destination channel in Discord, select **Edit Channel** → **Integrations** → **Webhooks**, then choose an existing webhook or select **New Webhook**. Use **Copy Webhook URL** and paste the complete URL after `Webhook=`.
+
 Enable notifications with:
 
 ```ini
