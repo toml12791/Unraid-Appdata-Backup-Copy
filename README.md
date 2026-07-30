@@ -206,7 +206,7 @@ Discord-test mode:
 
 <a name="windows-task-scheduler"></a>
 ### Windows Task Scheduler
-
+---
 Complete one successful manual run first.
 
 Recommended action:
