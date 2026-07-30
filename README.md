@@ -249,26 +249,38 @@ The utility does not currently include an internal single-instance lock. Prevent
 <details>
 <summary><h2>How the backup process works</h2></summary>
 
-<a name="how-a-normal-run-works"></a>
+The application presents the backup process as seven operational stages:
 
-| Step | Action |
+| Stage | Action |
 |---:|---|
-| `1` | Validate the source and destination. |
-| `2` | Locate the newest correctly named backup folder. |
-| `3` | Parse and validate its timestamp. |
-| `4` | Check whether it is stale. |
-| `5` | Wait for the source folder to remain unchanged. |
-| `6` | Estimate which files still need copying. |
-| `7` | Confirm sufficient destination free space. |
-| `8` | Copy with Robocopy. |
-| `9` | Parse and classify the Robocopy result. |
-| `10` | Verify source files against the destination. |
-| `11` | Apply local retention. |
-| `12` | Write the final log and send a Discord result when enabled. |
+| `[1]` | Validate paths and connections |
+| `[2]` | Find newest valid backup and check its age |
+| `[3]` | Wait until the newest backup is stable |
+| `[4]` | Estimate required copy space and verify free space |
+| `[5]` | Transfer backup data with Robocopy |
+| `[6]` | Verify copied files by relative path and size |
+| `[7]` | Retain only the configured number of recent local backups |
 
-<a name="backup-folder-naming"></a>
-### Backup-folder naming
----
+After the seven stages complete, the utility writes the final log and sends a Discord result when notifications are enabled.
+
+<a name="validate-paths-and-connections"></a>
+### Stage 1 — Validate paths and connections
+
+The utility validates the configured source and destination before inspecting or copying backup data.
+
+This includes confirming that:
+
+- The source path is reachable
+- The destination drive is available
+- The source and destination are not the same path
+- The destination and log directories can be created or accessed
+- The required configuration and internal policies are valid
+
+No source files are modified during validation.
+
+<a name="find-newest-valid-backup"></a>
+### Stage 2 — Find newest valid backup and check its age
+
 > **This utility is designed to work with backups created by the Unraid plugin `Appdata Backup`, or another process that uses the same `ab_YYYYMMDD_HHMMSS` folder-naming convention.**
 
 The source folder must directly contain at least one backup directory whose name exactly matches:
@@ -294,9 +306,8 @@ ab_20260727
 
 Matching folder names are sorted newest first.
 
-<a name="backup-age"></a>
-### Backup age
----
+#### Backup age
+
 Default maximum age:
 
 ```text
@@ -311,8 +322,8 @@ The timestamp is taken from the backup-folder name.
 Setting the maximum age to `0` does not disable freshness checking. It creates an extremely strict limit and will normally mark every existing backup as stale.
 
 <a name="source-stability-check"></a>
-### Source stability check
----
+### Stage 3 — Wait until the newest backup is stable
+
 The newest backup is not copied immediately. The utility repeatedly checks:
 
 - Recursive file count
@@ -330,8 +341,8 @@ Default maximum wait:
 Passing the stability check provides reasonable evidence that Unraid has finished writing the backup, but it does not verify archive, database, or application integrity.
 
 <a name="free-space-check"></a>
-### Free-space check
----
+### Stage 4 — Estimate required copy space and verify free space
+
 Before copying, the utility estimates which files still need to be transferred.
 
 A destination file is considered already matching when:
@@ -357,8 +368,8 @@ When no data appears to require copying, the reserve is not required for that ru
 Robocopy remains the final authority on which files are copied.
 
 <a name="robocopy-behavior"></a>
-### Robocopy behavior
----
+### Stage 5 — Transfer backup data with Robocopy
+
 The transfer uses:
 
 ```text
@@ -378,8 +389,7 @@ In practical terms:
 - All subfolders are copied, including empty folders.
 - File and folder data, attributes, and timestamps are preserved.
 - Unbuffered I/O is used.
-- File timestamps are compared using two-second precision, improving
-  compatibility between the Unraid SMB source and the Windows destination.
+- File timestamps are compared using two-second precision, improving compatibility between the Unraid SMB source and the Windows destination.
 - Failed copies are retried twice.
 - Each retry waits five seconds.
 - Progress and ETA information are displayed.
@@ -403,8 +413,8 @@ Robocopy return codes are interpreted as:
 Codes `4-7` are accepted only when post-copy verification passes and retention succeeds.
 
 <a name="post-copy-verification"></a>
-### Post-copy verification
----
+### Stage 6 — Verify copied files by relative path and size
+
 For every source file, the utility checks:
 
 1. The same relative path exists at the destination.
@@ -423,8 +433,8 @@ The log may list up to the first 20 missing, wrong-size, or extra paths.
 > Verification does not use cryptographic hashes. Equal-size files with different contents would not be detected.
 
 <a name="local-retention"></a>
-### Local retention
----
+### Stage 7 — Retain recent local backups
+
 Default retention:
 
 ```text
@@ -445,6 +455,8 @@ Retention:
 - Ignores nonmatching local folders
 - Runs only after verification passes
 - Logs each folder before deletion
+
+> The application displays this stage using the configured retention count. With the default setting, it appears as: `Retain only the 10 most recent local backups`.
 
 </details>
 
