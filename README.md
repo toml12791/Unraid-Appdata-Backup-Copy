@@ -110,16 +110,6 @@ Source=\\SERVER\Share\Backup
 Destination=E:\Backup Destination
 ```
 
-`Target` may be used instead of `Source`:
-
-```ini
-[Backup]
-Target=\\SERVER\Share\Backup
-Destination=E:\Backup Destination
-```
-
-Do not define both `Source` and `Target`.
-
 Rules:
 
 - `Source` may be a UNC path or an absolute drive path.
