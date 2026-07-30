@@ -538,7 +538,7 @@ Recommended action:
 ```text
 /scheduled
 ```
-> **The `/scheduled` argument runs the utility in [scheduled mode](#scheduled-backup). This is necessary to prevent the confirmations present in [manual mode](#manual-backup)**
+> **The `/scheduled` argument runs the utility in scheduled mode. This is necessary to prevent the confirmations present in manual mode. See [Run modes](#run-modes) for details.**
 
 **Start in**
 
