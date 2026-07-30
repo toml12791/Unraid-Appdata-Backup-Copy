@@ -96,7 +96,9 @@ Discord is optional. Leave `Webhook=` blank to disable notifications.
 
 > `Config.ini` may contain a Discord webhook and should not be shared.
 
-## Manual Configuration
+<details>
+<summary><strong>Manual Configuration</strong></summary>
+
 
 ### Backup section
 
@@ -156,7 +158,11 @@ When first-run recovery replaces a custom or malformed `Config.ini`, the previou
 Config.ini.bak-YYYYMMDD_HHMMSS
 ```
 
-## Run modes
+</details>
+
+<details>
+<summary><strong>Run modes</strong></summary>
+
 
 ### Manual backup
 
@@ -218,7 +224,11 @@ pwsh.exe -NoProfile -ExecutionPolicy Bypass `
   -File ".\Unraid_Appdata_Backup_Copy.ps1" -TestDiscord
 ```
 
-## Backup-folder naming
+</details>
+
+<details>
+<summary><strong>Backup-folder naming</strong></summary>
+
 
 The source folder must directly contain at least one backup directory whose name exactly matches:
 
@@ -243,7 +253,11 @@ ab_20260727
 
 Matching folder names are sorted newest first.
 
-## How a normal run works
+</details>
+
+<details>
+<summary><strong>How a normal run works</strong></summary>
+
 
 1. Validate the source and destination.
 2. Locate the newest correctly named backup folder.
@@ -258,7 +272,11 @@ Matching folder names are sorted newest first.
 11. Apply local retention.
 12. Write the final log and send a Discord result when enabled.
 
-## Backup age
+</details>
+
+<details>
+<summary><strong>Backup age</strong></summary>
+
 
 Default maximum age:
 
@@ -273,7 +291,11 @@ The timestamp is taken from the backup-folder name.
 
 Setting the maximum age to `0` does not disable freshness checking. It creates an extremely strict limit and will normally mark every existing backup as stale.
 
-## Source stability check
+</details>
+
+<details>
+<summary><strong>Source stability check</strong></summary>
+
 
 The newest backup is not copied immediately. The utility repeatedly checks:
 
@@ -291,7 +313,11 @@ Default maximum wait:
 
 This strongly suggests that Unraid has finished writing the backup, but it does not prove archive, database, or application integrity.
 
-## Free-space check
+</details>
+
+<details>
+<summary><strong>Free-space check</strong></summary>
+
 
 Before copying, the utility estimates which files still need to be transferred.
 
@@ -317,7 +343,11 @@ When no data appears to require copying, the reserve is not required for that ru
 
 Robocopy remains the final authority on which files are copied.
 
-## Robocopy behavior
+</details>
+
+<details>
+<summary><strong>Robocopy behavior</strong></summary>
+
 
 The transfer uses:
 
@@ -361,7 +391,11 @@ Robocopy return codes are interpreted as:
 
 Codes `4-7` are accepted only when post-copy verification passes and retention succeeds.
 
-## Post-copy verification
+</details>
+
+<details>
+<summary><strong>Post-copy verification</strong></summary>
+
 
 For every source file, the utility checks:
 
@@ -380,7 +414,11 @@ The log may list up to the first 20 missing, wrong-size, or extra paths.
 
 > Verification does not use cryptographic hashes. Equal-size files with different contents would not be detected.
 
-## Local retention
+</details>
+
+<details>
+<summary><strong>Local retention</strong></summary>
+
 
 Default retention:
 
@@ -403,7 +441,11 @@ Retention:
 - Runs only after verification passes
 - Logs each folder before deletion
 
-## Discord notifications
+</details>
+
+<details>
+<summary><strong>Discord notifications</strong></summary>
+
 
 Notification colors:
 
@@ -431,7 +473,11 @@ A Discord delivery problem does not turn an otherwise successful backup into a f
 
 The configured webhook is redacted from Discord-delivery diagnostic text.
 
-## Logs
+</details>
+
+<details>
+<summary><strong>Logs</strong></summary>
+
 
 If the destination is:
 
@@ -469,7 +515,11 @@ Temporary Robocopy logs are normally removed after successful parsing. They may 
 
 Permanent logs are not automatically pruned.
 
-## Windows Task Scheduler
+</details>
+
+<details>
+<summary><strong>Windows Task Scheduler</strong></summary>
+
 
 Complete one successful manual run first.
 
@@ -503,7 +553,11 @@ Recommended task settings:
 
 The utility does not currently include an internal single-instance lock. Prevent overlapping runs through Task Scheduler.
 
-## Result types
+</details>
+
+<details>
+<summary><strong>Result types</strong></summary>
+
 
 ### Clean success
 
@@ -551,7 +605,11 @@ Result:
 - Failure screen
 - Nonzero exit code
 
-## Default settings
+</details>
+
+<details>
+<summary><strong>Default settings</strong></summary>
+
 
 | Setting | Default |
 |---|---:|
@@ -562,6 +620,8 @@ Result:
 | Maximum stability wait | `6 hours` |
 
 These policies are defined near the beginning of the PowerShell script.
+
+</details>
 
 <details>
 <summary><strong>Exit codes</strong></summary>
@@ -656,7 +716,9 @@ Check the task account, stored password, network-share permissions, destination-
 
 </details>
 
-## Known limitations
+<details>
+<summary><strong>Known limitations</strong></summary>
+
 
 - Verification uses relative path and file size, not file hashes.
 - Source completion is inferred from stability.
@@ -671,7 +733,11 @@ Check the task account, stored password, network-share permissions, destination-
 - There is no rollback if retention partially succeeds before an error.
 - Archive contents and application databases are not internally validated.
 
-## What this utility does not replace
+</details>
+
+<details>
+<summary><strong>What this utility does not replace</strong></summary>
+
 
 This project does not replace:
 
@@ -684,8 +750,14 @@ This project does not replace:
 
 It is an additional copy, verification, retention, logging, and notification layer.
 
-## License
+</details>
+
+<details>
+<summary><strong>License</strong></summary>
+
 
 Released under the [MIT License](LICENSE).
 
 Copyright (c) 2026 toml12791
+
+</details>
