@@ -568,35 +568,6 @@ Result:
 - Failure screen
 - Nonzero exit code
 
-<a name="exit-codes"></a>
-### Exit codes
-
-| Code | Meaning |
-|---:|---|
-| `0` | Success or completed with warning |
-| `1` | Unexpected failure, missing Robocopy, or Discord-test delivery failure |
-| `10` | Destination drive unavailable |
-| `11` | Source unavailable |
-| `12` | No valid `ab_YYYYMMDD_HHMMSS` source folder found |
-| `13` | Log directory or log file could not be created |
-| `14` | Local destination folder could not be created |
-| `15` | Retention cleanup failed |
-| `16` | Stability wait timed out |
-| `17` | Robocopy temporary log missing or could not be appended |
-| `18` | Robocopy summary parsing failed |
-| `19` | Discord test could not run because Discord was disabled |
-| `20` | Scheduled run rejected a stale backup |
-| `21` | Backup timestamp could not be validated |
-| `22` | Configuration or internal policy is invalid |
-| `23` | Free-space calculation failed |
-| `24` | Insufficient destination free space |
-| `25` | Verification process could not complete |
-| `26` | Destination failed path-and-size verification |
-| `27` | Invalid or conflicting command-line arguments |
-| `8+` | Fatal Robocopy codes may be returned directly |
-
-When diagnosing a failure, use the logged stage, reason, details, and log path rather than relying on the number alone.
-
 </details>
 
 <a name="troubleshooting"></a>
@@ -659,6 +630,34 @@ Do not manually delete older backups until the cause is understood.
 ### Manual runs work but scheduled runs fail
 
 Check the task account, stored password, network-share permissions, destination-drive availability, working directory, `/scheduled` spelling, Task Scheduler history, and the utility log.
+
+### Exit codes
+
+| Code | Meaning |
+|---:|---|
+| `0` | Success or completed with warning |
+| `1` | Unexpected failure, missing Robocopy, or Discord-test delivery failure |
+| `10` | Destination drive unavailable |
+| `11` | Source unavailable |
+| `12` | No valid `ab_YYYYMMDD_HHMMSS` source folder found |
+| `13` | Log directory or log file could not be created |
+| `14` | Local destination folder could not be created |
+| `15` | Retention cleanup failed |
+| `16` | Stability wait timed out |
+| `17` | Robocopy temporary log missing or could not be appended |
+| `18` | Robocopy summary parsing failed |
+| `19` | Discord test could not run because Discord was disabled |
+| `20` | Scheduled run rejected a stale backup |
+| `21` | Backup timestamp could not be validated |
+| `22` | Configuration or internal policy is invalid |
+| `23` | Free-space calculation failed |
+| `24` | Insufficient destination free space |
+| `25` | Verification process could not complete |
+| `26` | Destination failed path-and-size verification |
+| `27` | Invalid or conflicting command-line arguments |
+| `8+` | Fatal Robocopy codes may be returned directly |
+
+When diagnosing a failure, use the logged stage, reason, details, and log path rather than relying on the number alone.
 
 </details>
 
