@@ -368,7 +368,8 @@ In practical terms:
 - All subfolders are copied, including empty folders.
 - File and folder data, attributes, and timestamps are preserved.
 - Unbuffered I/O is used.
-- Two-second timestamp precision is allowed.
+- File timestamps are compared using two-second precision, improving
+  compatibility between the Unraid SMB source and the Windows destination.
 - Failed copies are retried twice.
 - Each retry waits five seconds.
 - Progress and ETA information are displayed.
