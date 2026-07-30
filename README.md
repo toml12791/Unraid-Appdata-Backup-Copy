@@ -466,7 +466,7 @@ Retention:
 
 <a name="discord-notifications"></a>
 ### Discord notifications
-
+---
 Notification colors:
 
 | Color | Meaning |
@@ -495,7 +495,7 @@ The configured webhook is redacted from Discord-delivery diagnostic text.
 
 <a name="logs"></a>
 ### Logs
-
+---
 If the destination is:
 
 ```text
@@ -534,7 +534,7 @@ Permanent logs are not automatically pruned.
 
 <a name="result-types"></a>
 ### Result types
-
+---
 #### 🟢 Clean success
 
 A clean success means configuration, source checks, stability, space checks, Robocopy, verification, and retention all completed successfully.
@@ -588,7 +588,7 @@ Result:
 <summary><h2>Troubleshooting</h2></summary>
 
 ### First-run setup appeared unexpectedly
-
+---
 Setup appears when `Config.ini` is missing, malformed, incomplete, still uses a packaged placeholder, or contains a malformed nonblank webhook.
 
 Confirm that `Config.ini` is beside the PowerShell script and is not accidentally named `Config.ini.txt`.
@@ -608,20 +608,20 @@ RUN.cmd /testdiscord
 ```
 
 ### Source unavailable
-
+---
 - Open the exact UNC path in File Explorer.
 - Confirm Unraid and SMB are online.
 - Confirm the current or scheduled Windows account has share access.
 - Prefer UNC paths over mapped drive letters for network sources.
 
 ### Destination drive unavailable
-
+---
 - Confirm the external drive is connected.
 - Confirm the configured drive letter is correct.
 - Confirm the drive mounted before the run began.
 
 ### No valid source backup found
-
+---
 Confirm that `Source` directly contains a folder named like:
 
 ```text
@@ -629,23 +629,23 @@ ab_20260727_050002
 ```
 
 ### Stability never reaches 3/3
-
+---
 Possible causes include an active Unraid backup, a file that continues changing, an empty source folder, or intermittent SMB enumeration failures.
 
 Review the stability entries in the permanent log.
 
 ### Verification failed
-
+---
 Review the log for missing files, wrong-size files, source and destination counts, source and destination sizes, and the first affected paths.
 
 Do not manually delete older backups until the cause is understood.
 
 ### Manual runs work but scheduled runs fail
-
+---
 Check the task account, stored password, network-share permissions, destination-drive availability, working directory, `/scheduled` spelling, Task Scheduler history, and the utility log.
 
 ### Exit codes
-
+---
 | Code | Meaning |
 |---:|---|
 | `0` | Success or completed with warning |
@@ -680,7 +680,7 @@ When diagnosing a failure, use the logged stage, reason, details, and log path r
 
 <a name="default-settings"></a>
 ### Default settings
-
+---
 | Setting | Default |
 |---|---:|
 | Local backups retained | `10` |
@@ -693,7 +693,7 @@ These policies are defined near the beginning of the PowerShell script.
 
 <a name="known-limitations"></a>
 ### Known limitations
-
+---
 - Verification uses relative path and file size, not file hashes.
 - Source completion is inferred from stability.
 - Backup folders must use the exact `ab_YYYYMMDD_HHMMSS` naming pattern.
@@ -709,7 +709,7 @@ These policies are defined near the beginning of the PowerShell script.
 
 <a name="what-this-utility-does-not-replace"></a>
 ### What this utility does not replace
-
+---
 This project does not replace:
 
 - The original Unraid appdata backup
