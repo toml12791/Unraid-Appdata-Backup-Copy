@@ -97,7 +97,7 @@ Discord is optional. Leave `Webhook=` blank to disable notifications.
 > `Config.ini` may contain a Discord webhook and should not be shared.
 
 <details>
-<summary><strong>Manual Configuration</strong></summary>
+<summary><h2>Manual Configuration</h2></summary>
 
 
 ### Backup section
