@@ -757,7 +757,6 @@ It is an additional copy, verification, retention, logging, and notification lay
 
 </details>
 
-<details>
 <summary><h2>License</h2></summary>
 
 
