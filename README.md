@@ -303,7 +303,7 @@ The newest backup is not copied immediately. The utility repeatedly checks:
 - Total file size
 - Newest file modification time
 
-The source must remain unchanged for three consecutive one-minute comparisons. Any detected change resets the stability count.
+The source must remain unchanged for `3` consecutive one-minute comparisons. Any detected change resets the stability count.
 
 Default maximum wait:
 
