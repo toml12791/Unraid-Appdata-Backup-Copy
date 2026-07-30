@@ -133,10 +133,10 @@ When first-run recovery replaces a custom or malformed `Config.ini`, the previou
 ```text
 Config.ini.bak-YYYYMMDD_HHMMSS
 ```
----
+
 <a name="run-modes"></a>
 ### Run modes
-
+---
 #### Manual backup
 
 ```bat
@@ -182,7 +182,7 @@ Discord-test mode:
 - Exits `1` when delivery fails
 
 #### Direct PowerShell usage
-
+---
 > Run these commands from the folder containing `Unraid_Appdata_Backup_Copy.ps1`. They use whichever PowerShell version is currently open.
 > For normal use, `RUN.cmd` is recommended because it selects PowerShell 7 when available and handles the execution-policy arguments automatically.
 
