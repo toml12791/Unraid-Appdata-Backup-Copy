@@ -564,7 +564,7 @@ The utility does not currently include an internal single-instance lock. Prevent
 <summary><h2>Result types</h2></summary>
 
 
-### Clean success
+### 🟢 Clean success
 
 A clean success means configuration, source checks, stability, space checks, Robocopy, verification, and retention all completed successfully.
 
@@ -574,7 +574,7 @@ Result:
 - Checkmark completion screen
 - Exit code `0`
 
-### Completed with warning
+### 🟡 Completed with warning
 
 Common causes:
 
@@ -589,7 +589,7 @@ Result:
 - Warning completion screen
 - Exit code `0`
 
-### Failure
+### 🔴 Failure
 
 Examples:
 
