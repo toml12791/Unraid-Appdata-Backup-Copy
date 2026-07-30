@@ -265,7 +265,7 @@ After the seven stages complete, the utility writes the final log and sends a Di
 
 <a name="validate-paths-and-connections"></a>
 ### Stage 1 — Validate paths and connections
-
+---
 The utility validates the configured source and destination before inspecting or copying backup data.
 
 This includes confirming that:
@@ -280,7 +280,7 @@ No source files are modified during validation.
 
 <a name="find-newest-valid-backup"></a>
 ### Stage 2 — Find newest valid backup and check its age
-
+---
 > **This utility is designed to work with backups created by the Unraid plugin `Appdata Backup`, or another process that uses the same `ab_YYYYMMDD_HHMMSS` folder-naming convention.**
 
 The source folder must directly contain at least one backup directory whose name exactly matches:
@@ -323,7 +323,7 @@ Setting the maximum age to `0` does not disable freshness checking. It creates a
 
 <a name="source-stability-check"></a>
 ### Stage 3 — Wait until the newest backup is stable
-
+---
 The newest backup is not copied immediately. The utility repeatedly checks:
 
 - Recursive file count
@@ -342,7 +342,7 @@ Passing the stability check provides reasonable evidence that Unraid has finishe
 
 <a name="free-space-check"></a>
 ### Stage 4 — Estimate required copy space and verify free space
-
+---
 Before copying, the utility estimates which files still need to be transferred.
 
 A destination file is considered already matching when:
@@ -369,7 +369,7 @@ Robocopy remains the final authority on which files are copied.
 
 <a name="robocopy-behavior"></a>
 ### Stage 5 — Transfer backup data with Robocopy
-
+---
 The transfer uses:
 
 ```text
@@ -414,7 +414,7 @@ Codes `4-7` are accepted only when post-copy verification passes and retention s
 
 <a name="post-copy-verification"></a>
 ### Stage 6 — Verify copied files by relative path and size
-
+---
 For every source file, the utility checks:
 
 1. The same relative path exists at the destination.
@@ -434,7 +434,7 @@ The log may list up to the first 20 missing, wrong-size, or extra paths.
 
 <a name="local-retention"></a>
 ### Stage 7 — Retain recent local backups
-
+---
 Default retention:
 
 ```text
