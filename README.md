@@ -105,7 +105,7 @@ Rules:
 - Duplicate keys in the same section are rejected.
 - Settings before a section header are rejected.
 - Inline comments are not removed automatically.
----
+
 #### Discord section
 
 > **To create or retrieve a webhook:** Open the destination channel in Discord, select **Edit Channel** → **Integrations** → **Webhooks**, then choose an existing webhook or select **New Webhook**. Use **Copy Webhook URL** and paste the complete URL after `Webhook=`.
@@ -133,7 +133,7 @@ When first-run recovery replaces a custom or malformed `Config.ini`, the previou
 ```text
 Config.ini.bak-YYYYMMDD_HHMMSS
 ```
-
+---
 <a name="run-modes"></a>
 ### Run modes
 
