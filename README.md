@@ -250,7 +250,6 @@ The utility does not currently include an internal single-instance lock. Prevent
 <summary><h2>How the backup process works</h2></summary>
 
 <a name="how-a-normal-run-works"></a>
-### A typical run performs the following steps
 
 | Step | Action |
 |---:|---|
