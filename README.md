@@ -525,14 +525,14 @@ Complete one successful manual run first.
 
 Recommended action:
 
-**Program/script**
-
 > **Example paths:** Replace `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder where you extracted or placed the utility.
+
+**Program/script**
 
 ```text
 "C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
 ```
-> **Task Scheduler may automatically place quotation marks around this path when it is selected using **Browse**. Leave them in place.**
+> **Task Scheduler may automatically add quotation marks when the path is selected using **Browse**. Leave them in place.**
 
 **Arguments**
 
