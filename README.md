@@ -210,16 +210,25 @@ Discord-test mode:
 
 ### Direct PowerShell usage
 
+> **Run these commands from the folder containing `Unraid_Appdata_Backup_Copy.ps1`.** Otherwise, replace the relative script path with its full path.
+
+**Manual**
+
 ```powershell
-# Manual
 pwsh.exe -NoProfile -ExecutionPolicy Bypass `
   -File ".\Unraid_Appdata_Backup_Copy.ps1"
+```
 
-# Scheduled
+**Scheduled**
+
+```powershell
 pwsh.exe -NoProfile -ExecutionPolicy Bypass `
   -File ".\Unraid_Appdata_Backup_Copy.ps1" -Scheduled
+```
 
-# Discord test
+**Discord test**
+
+```powershell
 pwsh.exe -NoProfile -ExecutionPolicy Bypass `
   -File ".\Unraid_Appdata_Backup_Copy.ps1" -TestDiscord
 ```
