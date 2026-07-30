@@ -202,27 +202,25 @@ Discord-test mode:
 
 ### Direct PowerShell usage
 
-> **Run these commands from the folder containing `Unraid_Appdata_Backup_Copy.ps1`.** Otherwise, replace the relative script path with its full path.
+> Run these commands from the folder containing `Unraid_Appdata_Backup_Copy.ps1`. They use whichever PowerShell version is currently open.
+> For normal use, `RUN.cmd` is recommended because it selects PowerShell 7 when available and handles the execution-policy arguments automatically.
 
 **Manual**
 
 ```powershell
-pwsh.exe -NoProfile -ExecutionPolicy Bypass `
-  -File ".\Unraid_Appdata_Backup_Copy.ps1"
+& ".\Unraid_Appdata_Backup_Copy.ps1"
 ```
 
 **Scheduled**
 
 ```powershell
-pwsh.exe -NoProfile -ExecutionPolicy Bypass `
-  -File ".\Unraid_Appdata_Backup_Copy.ps1" -Scheduled
+& ".\Unraid_Appdata_Backup_Copy.ps1" -Scheduled
 ```
 
 **Discord test**
 
 ```powershell
-pwsh.exe -NoProfile -ExecutionPolicy Bypass `
-  -File ".\Unraid_Appdata_Backup_Copy.ps1" -TestDiscord
+& ".\Unraid_Appdata_Backup_Copy.ps1" -TestDiscord
 ```
 
 </details>
@@ -528,14 +526,14 @@ Complete one successful manual run first.
 
 Recommended action:
 
-> **Example paths:** Replace `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder where you extracted or placed the utility.
+> **Example installation path:** Replace both instances of `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder containing the utility.
 
 **Program/script**
 
 ```text
 "C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
 ```
-> **Task Scheduler may automatically add quotation marks when the path is selected using **Browse**. Leave them in place.**
+> **Task Scheduler may automatically add quotation marks when the path is selected using `Browse`. Leave them in place.**
 
 **Arguments**
 
