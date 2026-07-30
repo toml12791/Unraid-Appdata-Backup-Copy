@@ -50,25 +50,6 @@ The utility is deliberately conservative:
 
 PowerShell 7 is recommended but not required. `RUN.cmd` uses PowerShell 7 when available and otherwise falls back to Windows PowerShell 5.1.
 
-## Repository files
-
-| File | Purpose |
-|---|---|
-| `Unraid_Appdata_Backup_Copy.ps1` | Main PowerShell utility |
-| `RUN.cmd` | Launcher for manual, scheduled, and Discord-test modes |
-| `Config.example.ini` | Safe example configuration |
-| `README.md` | Project documentation |
-| `CHANGELOG.md` | Release history |
-| `LICENSE` | MIT License |
-
-`RUN.cmd` expects the PowerShell script to be named exactly:
-
-```text
-Unraid_Appdata_Backup_Copy.ps1
-```
-
-Do not rename the script unless `RUN.cmd` is updated too.
-
 ## Quick start
 
 1. Download or clone the repository.
