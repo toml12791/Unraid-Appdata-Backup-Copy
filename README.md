@@ -528,19 +528,19 @@ Recommended action:
 **Program/script**
 
 ```text
-C:\Windows\System32\cmd.exe
+"C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
 ```
 
 **Arguments**
 
 ```text
-/c ""C:\Scripts\Unraid Appdata Backup\RUN.cmd" /scheduled"
+/scheduled
 ```
 
 **Start in**
 
 ```text
-C:\Scripts\Unraid Appdata Backup
+C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0
 ```
 
 Recommended task settings:
