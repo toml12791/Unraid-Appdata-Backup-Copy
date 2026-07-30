@@ -182,7 +182,7 @@ Discord-test mode:
 - Exits `1` when delivery fails
 
 #### Direct PowerShell usage
----
+
 > Run these commands from the folder containing `Unraid_Appdata_Backup_Copy.ps1`. They use whichever PowerShell version is currently open.
 > For normal use, `RUN.cmd` is recommended because it selects PowerShell 7 when available and handles the execution-policy arguments automatically.
 
@@ -250,7 +250,7 @@ The utility does not currently include an internal single-instance lock. Prevent
 <summary><h2>How the backup process works</h2></summary>
 
 <a name="how-a-normal-run-works"></a>
-### How a normal run works
+### A typical run will perform the following steps...
 
 1. Validate the source and destination.
 2. Locate the newest correctly named backup folder.
@@ -267,7 +267,7 @@ The utility does not currently include an internal single-instance lock. Prevent
 
 <a name="backup-folder-naming"></a>
 ### Backup-folder naming
-
+---
 > **This utility is designed to work with backups created by the Unraid plugin `Appdata Backup`, or another process that uses the same `ab_YYYYMMDD_HHMMSS` folder-naming convention.**
 
 The source folder must directly contain at least one backup directory whose name exactly matches:
@@ -295,7 +295,7 @@ Matching folder names are sorted newest first.
 
 <a name="backup-age"></a>
 ### Backup age
-
+---
 Default maximum age:
 
 ```text
@@ -311,7 +311,7 @@ Setting the maximum age to `0` does not disable freshness checking. It creates a
 
 <a name="source-stability-check"></a>
 ### Source stability check
-
+---
 The newest backup is not copied immediately. The utility repeatedly checks:
 
 - Recursive file count
@@ -330,7 +330,7 @@ Passing the stability check provides reasonable evidence that Unraid has finishe
 
 <a name="free-space-check"></a>
 ### Free-space check
-
+---
 Before copying, the utility estimates which files still need to be transferred.
 
 A destination file is considered already matching when:
@@ -357,7 +357,7 @@ Robocopy remains the final authority on which files are copied.
 
 <a name="robocopy-behavior"></a>
 ### Robocopy behavior
-
+---
 The transfer uses:
 
 ```text
@@ -403,7 +403,7 @@ Codes `4-7` are accepted only when post-copy verification passes and retention s
 
 <a name="post-copy-verification"></a>
 ### Post-copy verification
-
+---
 For every source file, the utility checks:
 
 1. The same relative path exists at the destination.
@@ -423,7 +423,7 @@ The log may list up to the first 20 missing, wrong-size, or extra paths.
 
 <a name="local-retention"></a>
 ### Local retention
-
+---
 Default retention:
 
 ```text
