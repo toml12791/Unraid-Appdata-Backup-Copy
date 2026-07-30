@@ -532,13 +532,14 @@ Recommended action:
 ```text
 "C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
 ```
+> **Task Scheduler may automatically place quotation marks around this path when it is selected using **Browse**. Leave them in place.**
 
 **Arguments**
 
 ```text
 /scheduled
 ```
-> **The `/scheduled` argument runs the utility in scheduled mode. This is necessary to prevent the confirmations present in manual mode. See [Run modes](#run-modes) for details.**
+> **The `/scheduled` argument runs the utility in scheduled mode. This prevents interactive prompts that could leave an unattended task waiting for input. See [Run modes](#run-modes) for details.**
 
 **Start in**
 
