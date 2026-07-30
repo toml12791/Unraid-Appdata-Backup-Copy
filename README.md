@@ -249,6 +249,22 @@ The utility does not currently include an internal single-instance lock. Prevent
 <details>
 <summary><h2>How the backup process works</h2></summary>
 
+<a name="how-a-normal-run-works"></a>
+### How a normal run works
+
+1. Validate the source and destination.
+2. Locate the newest correctly named backup folder.
+3. Parse and validate its timestamp.
+4. Check whether it is stale.
+5. Wait for the source folder to remain unchanged.
+6. Estimate which files still need copying.
+7. Confirm sufficient destination free space.
+8. Copy with Robocopy.
+9. Parse and classify the Robocopy result.
+10. Verify source files against the destination.
+11. Apply local retention.
+12. Write the final log and send a Discord result when enabled.
+
 <a name="backup-folder-naming"></a>
 ### Backup-folder naming
 
@@ -276,22 +292,6 @@ ab_20260727
 ```
 
 Matching folder names are sorted newest first.
-
-<a name="how-a-normal-run-works"></a>
-### How a normal run works
-
-1. Validate the source and destination.
-2. Locate the newest correctly named backup folder.
-3. Parse and validate its timestamp.
-4. Check whether it is stale.
-5. Wait for the source folder to remain unchanged.
-6. Estimate which files still need copying.
-7. Confirm sufficient destination free space.
-8. Copy with Robocopy.
-9. Parse and classify the Robocopy result.
-10. Verify source files against the destination.
-11. Apply local retention.
-12. Write the final log and send a Discord result when enabled.
 
 <a name="backup-age"></a>
 ### Backup age
