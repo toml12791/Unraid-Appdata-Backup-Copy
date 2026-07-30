@@ -134,6 +134,45 @@ When first-run recovery replaces a custom or malformed `Config.ini`, the previou
 Config.ini.bak-YYYYMMDD_HHMMSS
 ```
 
+<a name="windows-task-scheduler"></a>
+### Windows Task Scheduler
+---
+Complete one successful manual run first.
+
+Recommended action:
+
+> **Example installation path:** Replace both instances of `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder containing the utility.
+
+**Program/script**
+
+```text
+"C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
+```
+> **Task Scheduler may automatically add quotation marks when the path is selected using `Browse`. Leave them in place.**
+
+**Arguments**
+
+```text
+/scheduled
+```
+> **The `/scheduled` argument runs the utility in scheduled mode. This prevents interactive prompts that could leave an unattended task waiting for input. See [Run modes](#run-modes) for details.**
+
+**Start in**
+
+```text
+C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0
+```
+
+Recommended task settings:
+
+- Run under a Windows account with access to the Unraid share
+- Run whether the user is logged on or not, when desired
+- Wake the computer to run the task, when desired
+- Run as soon as possible after a missed start, when desired
+- When the task is already running, choose **Do not start a new instance**
+
+The utility does not currently include an internal single-instance lock. Prevent overlapping runs through Task Scheduler.
+
 <a name="run-modes"></a>
 ### Run modes
 ---
@@ -203,45 +242,6 @@ Discord-test mode:
 ```powershell
 & ".\Unraid_Appdata_Backup_Copy.ps1" -TestDiscord
 ```
-
-<a name="windows-task-scheduler"></a>
-### Windows Task Scheduler
----
-Complete one successful manual run first.
-
-Recommended action:
-
-> **Example installation path:** Replace both instances of `C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0` below with the actual folder containing the utility.
-
-**Program/script**
-
-```text
-"C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0\RUN.cmd"
-```
-> **Task Scheduler may automatically add quotation marks when the path is selected using `Browse`. Leave them in place.**
-
-**Arguments**
-
-```text
-/scheduled
-```
-> **The `/scheduled` argument runs the utility in scheduled mode. This prevents interactive prompts that could leave an unattended task waiting for input. See [Run modes](#run-modes) for details.**
-
-**Start in**
-
-```text
-C:\Scripts\Unraid-Appdata-Backup-Copy-v1.0.0
-```
-
-Recommended task settings:
-
-- Run under a Windows account with access to the Unraid share
-- Run whether the user is logged on or not, when desired
-- Wake the computer to run the task, when desired
-- Run as soon as possible after a missed start, when desired
-- When the task is already running, choose **Do not start a new instance**
-
-The utility does not currently include an internal single-instance lock. Prevent overlapping runs through Task Scheduler.
 
 </details>
 
